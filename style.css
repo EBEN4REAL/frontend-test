@@ -1,0 +1,27 @@
+:root {
+    --level: 50%;
+  }
+
+.progress_wrapper {
+    width: 350px;
+    background: #333333;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.progress__wrapper__inner {
+    width: 90%;
+    border-radius: 30px;
+    background: #555555;
+    height: 35px;
+    display: flex;
+    align-items: center;
+}
+.progress {
+    height: 20px;
+    background: #f38a3a;
+    border-radius: 10PX;
+    width:  var(--level);
+    margin: 10px;
+}
