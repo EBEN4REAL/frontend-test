@@ -1,5 +1,5 @@
 <html>
-    <title>Progress Bar</title>
+    <title>Progress Bar & Warn the Developer Challenge</title>
     <head>
         <link href="style.css" rel="stylesheet"  />
     </head>
@@ -7,11 +7,19 @@
         <!-- MAKING USE OF % WIDTH -->
         <div class="progress_wrapper">
             <div class="progress__wrapper__inner">
-                <div class="progress">
-
-                </div>
+                <div class="progress"></div>
             </div>
         </div>
     </body>
+
+    <script type="text/javascript">
+        const warnTheDeveloper  = (n,m,s) => {
+                if (m <= n - s + 1) return m + s - 1;
+                m = m - (n - s + 1);
+                return (m % n == 0) ? n : (m % n);
+        }
+        console.log(warnTheDeveloper(5, 2, 1));
+
+    </script>
 </html>
 
