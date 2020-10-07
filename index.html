@@ -1,5 +1,5 @@
 <html>
-    <title>Progress Bar & Warn the Developer Challenge</title>
+    <title></title>
     <head>
         <link href="style.css" rel="stylesheet"  />
     </head>
@@ -13,13 +13,77 @@
     </body>
 
     <script type="text/javascript">
-        const warnTheDeveloper  = (n,m,s) => {
-                if (m <= n - s + 1) return m + s - 1;
-                m = m - (n - s + 1);
-                return (m % n == 0) ? n : (m % n);
-        }
-        console.log(warnTheDeveloper(5, 2, 1));
+        const quadraticFormular  = (a,b,c) => {
+            const ac = (4*a*c)
+            const x = (b * b);
+            const sqrtPart =  x - ac
+            const ans1 = ((-(b) + Math.sqrt(sqrtPart)) / (2*a)).toFixed(2);
+            const ans2 = ((-(b) - Math.sqrt(sqrtPart)) / (2*a)).toFixed(2);
+            console.log(ans1);
+            console.log(ans2);
 
+        }
+        quadraticFormular(1, -5, 6)
+
+        
+
+        const fibonacciSequence = val => {
+            let fibArr = [0,1];
+                for(let i=2; i<=val; i++){
+                    if(i>1) {
+                        fibArr.push(fibArr[i-1] + fibArr[i-2])
+                    }
+                } 
+                return fibArr;
+            }
+            
+        console.log(fibonacciSequence(5))
+
+        var fibonacci_series = function (n) 
+        {
+          if (n===1) 
+          {
+            return [0, 1];
+          } 
+          else 
+          {
+            var s = fibonacci_series(n - 1);
+            s.push(s[s.length - 1] + s[s.length - 2]);
+            return s;
+          }
+        };
+
+        console.log(fibonacci_series(6))
+
+        const mumbler = str => {
+            const arr = []
+            for(i=0; i<str.length; i++) {
+                arr.push(`${str[i].toUpperCase()}${str[i].toLowerCase().repeat(i)}`)
+            }
+            return arr.join("-")
+        }
+
+        console.log(mumbler("Eben"))
+
+        const lrgstfv = (str) => {
+            let len = str.length;
+            let strt = 0;
+            let ff = [];
+            for(i = 0; i < len; i++){
+                ff.push(str.substring(i, i + 5))
+            }
+            return ff.sort().reverse()[0];
+        }
+
+        console.log(lrgstfv("8949574857475645"))
     </script>
 </html>
+
+
+
+
+
+
+
+
 
