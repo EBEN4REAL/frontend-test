@@ -29,31 +29,22 @@
 
         const fibonacciSequence = val => {
             let fibArr = [0,1];
-            for(let i=2; i<=val; i++){
-                if(i>1) {
-                    fibArr.push(fibArr[i-1] + fibArr[i-2])
-                }
+            for(let i=2; i<val; i++){
+                fibArr.push(fibArr[i-1] + fibArr[i-2])
             } 
             return fibArr;
         }
             
-        console.log(fibonacciSequence(5))
+        // console.log(fibonacciSequence(7))
 
-        var fibonacci_series = function (n) 
-        {
-          if (n===1) 
-          {
-            return [0, 1];
-          } 
-          else 
-          {
-            var s = fibonacci_series(n - 1);
-            s.push(s[s.length - 1] + s[s.length - 2]);
-            return s;
-          }
-        };
+        const fibRecur = n => {
+            if(n < 2) {
+                return n
+            }
+            return fibRecur(n-1) + fibRecur(n-2)
+        }
 
-        console.log(fibonacci_series(6))
+        console.log(fibRecur(10))
 
         const mumbler = str => {
             const arr = []
@@ -78,20 +69,164 @@
 
 
         const isPalindrome = str => str.split("").reverse().join("") === str
-        console.log(isPalindrome("cac"));
+        // console.log(isPalindrome("cac"));
 
+        // OR USING EVERY FUNCTION
+        const palindrome = str => {
+            return str.split('').every((el,i) => {
+                console.log(str[str.length -i - 1])
+                return el === str[str.length - i -1]
+            })
+        }
 
+        console.log(palindrome("cac"))
 
-        const  anagram = (s1, s2) => s1.split("").sort().join("") === s2.split("").sort().join("")
-        console.log(anagram("anagram", 'nagaram'))
+        const  anagram = (s1, s2) => s1.replace(/[^\w]/g, '').toLowerCase().split("").sort().join("") === s2.replace(/[^\w]/g, '').toLowerCase().split("").sort().join("")
+        console.log(anagram("anagram", 'nag a rams'))
 
+        // OR Using character maps
+        function buildChatMap(str) {
+            const charMap = {}
+            for(let char of str.replace(/[^\w]/g, '')) {
+                charMap[char] = charMap[char] + 1 || 1
+            }
+            return charMap
+        }
+        function anagrams (strA, strB) {
+            const aCharMap = buildChatMap(strA)
+            const bCharMap = buildChatMap(strB)
+
+            if(Object.keys(aCharMap).length  !== Object.keys(bCharMap).length) {
+                return false
+            }
+            for(let char in aCharMap) {
+                if(aCharMap[char] !== bCharMap[char]){
+                    return false
+                }
+            }
+
+            return true
+        } 
+        console.log(anagrams("anagram", 'nagaram'))
         // FIZZBUZZ
         const fizzBuzz =  () => {
             for(let i=1; i<=100; i++) {
-                i % 3 == 0 ? console.log("Fizz" + i) : i % 5 == 0  ? console.log("Buzz" + i) : i % 3 == 0 && i % 5 == 0 ? console.log("FizzBuzz" + i) : null
+                i % 3 == 0 ? console.log("fizz" + i) : i % 5 == 0  ? console.log("buzz" + i) : i % 3 == 0 && i % 5 == 0 ? console.log("fizzBuzz" + i) : null
             }
         }
         fizzBuzz()
+        // Reversed String without the reverse functio9n
+        function reverse(str) {
+            let reversed = ""
+            for (let char of str) {
+                reversed = char + reversed
+                console.log(reversed)
+            }
+            return reversed
+        }
+        // console.log(reverse('Eben'))
+
+        //OR USINMG REDUCE
+        function reverseRed(str) {
+            return str.split('').reduce((rev, char) => (char + rev), '')
+        }
+        console.log(reverseRed('Segun'))
+
+
+        // Integer Reversal
+        function reverseInteger(n) {
+            const reversedInteger =  n.toString().split('').reverse().join('')
+            if(n < 0) {
+                return parseInt(reversedInteger) * -1
+            }
+            return parseInt(reversedInteger)
+        }
+            
+        console.log(reverseInteger(500))
+
+
+
+        // Characters and length maps
+        const string = "Ebenezer"
+        const chars = {}
+
+        for(let char of string){
+            !chars[char] ?  chars[char] = 1 : chars[char] += 1
+        }
+        console.log(chars)
+
+        // Most frequently occuring number in a string
+        function maxChar(str) {
+            const obj = {}
+            str.split('').forEach(el => {
+                obj[el] = obj[el] + 1 || 1
+            })
+            let max = 0
+            let maxChar = ''
+            for(let char in obj) {
+                if(obj[char] > max) {
+                    max = obj[char]
+                    maxChar = char
+                }
+            }
+            return maxChar;
+        }
+
+        console.log(maxChar('Ebenezer'))
+
+        // Array Chunking
+        function chunk(array, size) {
+            const chunks = []
+            array.forEach(el => {
+                const last = chunks[chunks.length - 1]
+                if(!last || last.length === size) {
+                    chunks.push([el])
+                }else {
+                    last.push(el)
+                }
+            })
+            return chunks
+        }
+
+        // console.log(chunk([1,2,3,4,5,6,7,8,9], 2))
+
+        // OR USING SLICE METHOD
+        function chunk(array, size) {
+            let chunked = []
+            let index = 0;
+
+            while(index < array.length) {
+                chunked.push(array.slice(index, index + size))
+                index += size
+            }
+            return chunked
+        }
+        console.log(chunk([1,2,3,4,5,6,7,8,9], 2))
+
+
+        // SENTENCE CAPITALIZATION
+        function capitalize(str) {
+            return str.split(' ').map((el,i) => {
+                return el[0].toUpperCase() + el.slice(1).toLowerCase()
+            }).join(' ')
+        }
+
+        console.log(capitalize('i love going, home'))
+
+
+
+
+
+        // Algorithm Questions
+        // Reverse a string
+        // Palindrome (reads same forward and reversed)
+        // Reversing an integer
+        // SENTENCE CAPITALIZATION
+        // ANAGRAM
+        // ARRAY CHUNKING
+        // FIZZ BUZZ
+        // FIBONNACCI
+        // MAX CHARS
     </script>
 </html>
 
