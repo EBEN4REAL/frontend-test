@@ -13,6 +13,17 @@
     </body>
 
     <script type="text/javascript">
+        // Algorithm Questions
+        // Reverse a string
+        // Palindrome (reads same forward and reversed)
+        // Reversing an integer
+        // SENTENCE CAPITALIZATION
+        // ANAGRAM
+        // ARRAY CHUNKING
+        // FIZZ BUZZ
+        // FIBONNACCI
+        // MAX CHARS
+        // FACTORIAL
         const quadraticFormular  = (a,b,c) => {
             const ac = (4*a*c)
             const x = (b * b);
@@ -205,28 +216,100 @@
 
 
         // SENTENCE CAPITALIZATION
-        function capitalize(str) {
-            return str.split(' ').map((el,i) => {
-                return el[0].toUpperCase() + el.slice(1).toLowerCase()
-            }).join(' ')
+        const capitalize =  str => (str.split(' ').map((el,i) =>  el[0].toUpperCase() + el.slice(1).toLowerCase()).join(' '))
+        // OR 
+        const capital = str => {
+            let strng = str[0].toUpperCase()
+            console.log(strng)
+
+            for(let i =1; i<str.length; i++) {
+                if(str[i-1] === ' ') {
+                    strng += str[i].toUpperCase()
+                }else {
+                    strng += str[i].toLowerCase()
+                }
+            }
+
+            return strng
         }
 
-        console.log(capitalize('i love going, home'))
+        console.log(capital('i love going, home'))
+
+        function stairCase(n)  {
+            for(let row=0; row<n; row++) {
+                let stair = ''
+                for(let column = 0; column < n; column++) {
+                    if(column <= row) {
+                        stair += '#'
+                    }else {
+                        stair += ' '
+                    }
+                }
+                console.log(stair)
+            }
+        }
+        // stairCase(5)
+
+        // OR using Recursion
+        function steps(n, row = 0, stair = '') {
+            if(n === row) {
+                return;
+            }
+            if(n === stair.length){
+                console.log(stair)
+                return steps(n, row + 1)
+            }
+            if(stair.length <= row) {
+                stair += '#'
+            }else {
+                stair += ' ' 
+            }
+            steps(n, row, stair)
+         }
+
+         steps(6)
+
+          function stepsPyramid(n) {
+            let midpoint = Math.floor(((2 * n) - 1) / 2)
+            console.log(midpoint)
+           for(let row=0; row<n; row++){
+            let stair = ''
+            for(let col=0; col<((2 * n) - 1); col++) {
+                if(midpoint - row <= col && midpoint + row >= col) {
+                    stair += '#'
+                }else {
+                    stair += ' '
+                }
+            } 
+             console.log(stair)
+           }
+
+         }
+
+         stepsPyramid(2)
+
+         // Factorial
+         const Factorial = (num) => {
+            // with Recursion
+            if(num <= 0) {
+                return 1
+            }else {
+                return (num * Factorial(num - 1));
+            }
+            // without Recursion
+            // let res = 1;
+            // for(let i=num; i>1; i--){
+            //     res = res * i
+            // }
+            // console.log(res)
+         }
+
+         console.log(Factorial(6))
 
 
 
 
-
-        // Algorithm Questions
-        // Reverse a string
-        // Palindrome (reads same forward and reversed)
-        // Reversing an integer
-        // SENTENCE CAPITALIZATION
-        // ANAGRAM
-        // ARRAY CHUNKING
-        // FIZZ BUZZ
-        // FIBONNACCI
-        // MAX CHARS
+     
     </script>
 </html>
 
