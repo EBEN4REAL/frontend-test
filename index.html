@@ -307,6 +307,35 @@
 
          console.log(Factorial(6))
 
+         const vowels = str => {
+            let vowelChars  = ['a', 'e', 'i', 'o', 'u'] 
+            let vowelCount = 0
+            for(let i=0; i<str.length; i++) {
+                let index = vowelChars.indexOf(str[i].toLowerCase())
+                if(index > -1) {
+                    vowelCount += 1
+                }
+            }
+            return vowelCount
+         }
+
+         function vowelsRecursive(str, vowelCount=0, i = 0) {
+            let vols = ['a', 'e', 'i', 'o', 'u'] 
+            let newStr = str.slice(i)
+            if(i === (str.length - 1)) {
+                if(vols.includes(newStr.toLowerCase())){
+                    return vowelCount += 1
+                }else {
+                    return vowelCount
+                }
+            }
+            if(vols.includes(newStr.toLowerCase()[0])) {
+                vowelCount += 1
+            }
+            return vowelsRecursive(str.toLowerCase(), vowelCount, i + 1)
+        }
+         console.log(vowelsRecursive('Joshua'))
+
 
 
 
