@@ -23,6 +23,11 @@
         // FIBONNACCI
         // MAX CHARS
         // FACTORIAL
+        // PYRAMID
+        // FIND VOWELS
+        // STEPS
+        // SPIRAL MATRIX
+        // RUNTIME COMPLEXITY
         const quadraticFormular  = (a,b,c) => {
             const ac = (4*a*c)
             const x = (b * b);
@@ -335,6 +340,94 @@
             return vowelsRecursive(str.toLowerCase(), vowelCount, i + 1)
         }
          console.log(vowelsRecursive('Joshua'))
+
+        function spiralMatrix(n) {
+            let counter = 1
+            let matrix = []
+            let startRow = 0
+            let endRow = n - 1
+            let startColumn = 0
+            let endColumn = n - 1
+            for(let i=0; i<n; i++) {
+                matrix.push([])
+            }
+
+            while(startColumn <= endColumn && startRow <= endRow) {
+               
+                // TOP ROW
+                for(i=startColumn; i<=endColumn; i++){
+                    matrix[startRow][i]  = counter
+                    counter++
+                }
+                startRow++
+
+                // RIGHT COLUMN
+                for(i=startRow; i<=endRow; i++) {
+                    matrix[i][endColumn] = counter
+                    counter++
+                }
+                endColumn--
+
+                // BOTTOM ROW
+                 for(let i=endColumn; i>=startColumn; i--){
+                    matrix[endRow][i] = counter
+                    counter++
+                }
+                endRow--
+
+                 // LEFT COLUMN
+                for(i=endRow; i>=startRow; i--) {
+                    matrix[i][startColumn] = counter
+                    counter++
+                }
+                startColumn++
+
+            }
+           return matrix
+        }
+        console.log(spiralMatrix(3))
+
+        function fib(n) {
+            let arrInit = [0,1]
+            for(let i=2; i<=n; i++) {
+                arrInit.push(arrInit[i-2] + arrInit[i-1])
+            }
+           return arrInit[n]
+        }
+
+        function fibRecursive(n) {
+            if(n < 2) {
+                return n
+            }
+            console.log(fib(n-1))
+            console.log(fib(n-2))
+            // return fib(n-1) + fib(n-2)
+        }
+        console.log(fibRecursive(4))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
