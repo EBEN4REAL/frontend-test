@@ -13,6 +13,7 @@
     </body>
 
     <script type="text/javascript">
+
         // Reverse a string
         // Palindrome (reads same forward and reversed)
         // Reversing an integer
@@ -28,6 +29,12 @@
         // STEPS
         // SPIRAL MATRIX
         // RUNTIME COMPLEXITY
+
+        /***** DATA STRUCTURES ***/
+        // QUEUES
+        // LINKED-LISTS
+        // STACKS
+
         const quadraticFormular  = (a,b,c) => {
             const ac = (4*a*c)
             const x = (b * b);
@@ -120,7 +127,7 @@
                 i % 3 == 0 ? console.log("fizz" + i) : i % 5 == 0  ? console.log("buzz" + i) : i % 3 == 0 && i % 5 == 0 ? console.log("fizzBuzz" + i) : null
             }
         }
-        fizzBuzz()
+        // fizzBuzz()
         // Reversed String without the reverse functio9n
         function reverse(str) {
             let reversed = ""
@@ -394,21 +401,187 @@
             }
            return arrInit[n]
         }
-
-        function fibRecursive(n) {
-            if(n < 2) {
-                return n
+        
+        // QUEUES
+       class Queue {
+            constructor() {
+                this.data = [];
             }
-            console.log(fib(n-1))
-            console.log(fib(n-2))
-            // return fib(n-1) + fib(n-2)
+
+            add(record) {
+                this.data.unshift(record);
+            }
+
+            remove() {
+                return this.data.pop();
+            }
+            
+            peek() {
+                return this.data[this.data.length - 1] //Last Element in the Queue
+            }
+
+            getQUeue() {
+                return this.data
+            }
         }
-        console.log(fibRecursive(4))
+
+        function  weave(que_1, que_2) {
+            const q = new Queue()
+            while (que_1.peek() || que_2.peek()) {
+                if(que_1.peek()) {
+                    q.add(que_1.remove())
+                }
+                if(que_2.peek()) {
+                    q.add(que_2.remove())
+                }
+            }
+            return q
+        }
+       let queue_1 = new Queue()
+       queue_1.add(1)
+       queue_1.add(2)
+
+       let queue_2 = new Queue()
+       queue_2.add('HI')
+       queue_2.add('THERE')
+
+       const q = weave(queue_1,queue_2 )
+       //console.log(q)
+
+        // STACKS
+       class Stack {
+            constructor() {
+                this.data = []
+            }
+            push(record) {
+                this.data.push(record)
+            }
+            pop() {
+                return  this.data.pop()
+            }
+            peek() {
+                return this.data[this.data.length - 1]
+            }
+        }
+       
 
 
+        class StackQueue {
+            constructor() {
+                this.stackA = new Stack();
+                this.stackB = new Stack();
+            }
+
+            add(record) {
+                this.stackA.push(record)
+            }
+
+            remove() {
+                while(this.stackA.peek()) {
+                    console.log(this.stackA.pop())
+                    this.stackB.push(this.stackA.pop())
+                }
+                const  record = this.stackB.pop()
+
+                while(this.stackB.peek()) {
+                    this.stackA.push(this.stackB.pop())
+                }
+                return record
+            }
+            
+            peek() {
+                while(this.stackA.peek()) {
+                    this.stackB.push(this.stackA.pop())
+                }
+                const  record = this.stackB.peek()
+
+                while(this.stackB.peek()) {
+                    this.stackA.push(this.stackB.pop())
+                }
+
+                return record;
+            }
+
+            getStackA() {
+                return this.stackA
+            }
+            getStackB() {
+                return this.stackB
+            }
+        }
 
 
+        const sq = new StackQueue()
+        sq.add('Eben')
+        sq.add(3)
+        sq.add(4)
+        sq.remove()
+        console.log(sq.getStackA())
+        console.log(sq.getStackB())
 
+        /***** LINKED LISTS ***/
+        /***** In computer science, a linked list is a linear collection of data elements whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of 
+         * 
+         ****/ 
+        class Node {
+            constructor(data, next = null) {
+                this.data = data
+                this.next = next
+            }
+        }
+        
+        class LinkedList {
+            constructor() {
+                this.head = null
+            }
+            insertFirst(data) {
+                this.head = new Node(data, this.head)
+            }
+            size() {
+                let count = 0
+                let node = this.head
+
+                while(node) {
+                    count++
+                    node = node.next
+                }
+                return count
+            }
+            getFirst() {
+                return this.head
+            }
+            getLast() {
+                if(!this.head) {
+                    return null
+                }
+                let node = this.head
+
+                while(node) {
+                    if(!node.next) return node
+                    node = node.next
+                }
+            }
+            clearList() {
+                this.head =  null
+                return this.head
+            }
+            removeFirst() {
+                this.head = this.head.next
+            }
+        }
+         const nodeOne = new Node(5)
+         const list = new LinkedList()
+         list.insertFirst(5)
+         list.insertFirst(10)
+         list.insertFirst(15)
+         list.insertFirst(20)
+         list.insertFirst('Eben')
+         list.insertFirst(30)
+         console.log(list)
+         console.log(list.removeFirst())
+
+
+     
 
 
 
