@@ -566,7 +566,54 @@
                 return this.head
             }
             removeFirst() {
+                if(!this.head) {
+                    return
+                }
                 this.head = this.head.next
+            }
+            removeLast() {
+                if(!this.head) return
+                if(!this.head.next) {
+                    this.head = null
+                }
+                let node = this.head.next
+                let prev = this.head
+                while(node.next) {
+                    prev = node
+                    node = node.next
+                }
+                prev.next = null
+            }
+            insertLast(data) {
+                let lastNode = this.getLast()
+                if(lastNode) {
+                    lastNode.next = new Node(data)
+                }else {
+                    this.head = new Node(data)
+                }
+            }
+            getAt(index) {
+                if(!this.head) return null
+                let count = 0
+                let node = this.head
+
+                while(node) {
+                    if(count === index) {
+                        return node
+                    }
+                    count++
+                    node = node.next
+                }
+            }
+            removeAt(index) {
+                if(index === 0)  {
+                    this.head = this.head.next
+                    return
+                }
+                if(!this.head) return 
+                let prevNode = this.getAt(index-1)
+                if(!prevNode || !prevNode.next) return
+                prevNode.next = prevNode.next.next
             }
         }
          const nodeOne = new Node(5)
@@ -577,8 +624,9 @@
          list.insertFirst(20)
          list.insertFirst('Eben')
          list.insertFirst(30)
+         list.insertLast('Femi')
+         list.removeAt(10)
          console.log(list)
-         console.log(list.removeFirst())
 
 
      
