@@ -66,20 +66,16 @@
                     return char
                 }
             }
+           
         }
         console.log(firstNonRepeatingVals([0, 0, 1, 1, 4, 5,5,6]))
 
          /***** Rearrange positive and negative values in an array ***/
          function rearrangePosNeg(arr) {
             return [...arr].sort()
-
          }
          console.log(rearrangePosNeg([-1, 2, 0, 3,4, -3,-5, 6,7,8]))
 
-        
-
-
-       
         const fibonacciSequence = val => {
             let fibArr = [0,1];
             for(let i=2; i<val; i++){
@@ -726,40 +722,51 @@
         }
         console.log(circular(list))
 
+        function generateRandomNumber() {
+            return Math.floor(Math.random() * 9)
+        }
 
-     
+        function formatPin(pin) {
+            let randNum1 = generateRandomNumber(); 
+            let randNum2 = generateRandomNumber();
+            let randNum3 = generateRandomNumber();
 
+            const two = pin.substring(0, 2)
+            const lastTwo = pin.slice(2)
+            let newPin = `${randNum1}${two}${randNum2}${lastTwo}${randNum3}`
+            console.log(newPin)
+        }
+        formatPin('1234')
 
+        // CONCURRENCY AND ASYNCHRONOUS PROGRAMMING
+        const tick = Date.now();
+        const log = v => console.log(`${v} - Elapsed: ${Date.now() - tick} ms`)
 
+        // const codeBlocker = () => {
+        //   return Promise.resolve().then(() => {
+        //      let i = 0;
+        //      while(i < 1000000000){
+        //         i++;
+        //      }
+        //     return "Loop is Completed";
+        //   })
+        // }
 
+        const codeBlocker = () => {
+          return new Promise((resolve, reject) => {
+             let i = 0;
+             while(i < 1000000000){
+                i++;
+             }
+            resolve("Loop is Completed");
+          })
+        }
+                             
+        log("Synchronous 1");
 
+        codeBlocker().then(log);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     
+        log("Synchronous 2");
     </script>
 </html>
-
-
-
-
-
-
-
-
 
