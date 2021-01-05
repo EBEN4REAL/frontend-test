@@ -1,0 +1,22 @@
+{
+  "name": "parkway_projects",
+  "version": "1.0.0",
+  "description": "",
+  "main": "algos.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EBEN4REAL/frontend-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EBEN4REAL/frontend-test/issues"
+  },
+  "homepage": "https://github.com/EBEN4REAL/frontend-test#readme",
+  "dependencies": {
+    "jest": "^26.6.3"
+  }
+}
