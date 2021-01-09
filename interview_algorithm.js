@@ -43,13 +43,22 @@ const removeArrayDuplicates = arr => {
     return newArr.sort((a, b) => a - b)
 }
 const mergeSortedArr = (arr1, arr2) =>  [...arr1, ...arr2].sort((a,b) => a - b)    
+const swap = a => b => {
+    [a, b] = [b, a];
+    return `a: ${a} b: ${b}`
+}
+const reverse = str =>  str.split('').reverse().join('')
+
+
 const funcObjs = {
     verifyPrime,
     primefactors,
     fibonacciSequence,
     greatestCommonDivisor,
     removeArrayDuplicates,
-    mergeSortedArr
+    mergeSortedArr,
+    swap,
+    reverse
 }
 
 
