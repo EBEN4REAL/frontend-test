@@ -1,5 +1,6 @@
 const functions = require("./interview_algorithm.js");
 
+console.log(functions.reverseWords("I love Eben"))
 test("Return reversed string", () => {
     expect(functions.reverse('Eben')).toBe('nebE');
 });

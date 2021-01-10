@@ -1,4 +1,3 @@
-/***** verify  prime number ***/
 const verifyPrime = (num)  => {
     let res
     num % 2 !== 0 ? res = true : res = false
@@ -49,6 +48,8 @@ const swap = a => b => {
 }
 const reverse = str =>  str.split('').reverse().join('')
 
+const reverseWords = str =>  str.split('').reverse().join('')
+
 
 
 module.exports =  {
@@ -59,7 +60,8 @@ module.exports =  {
     removeArrayDuplicates,
     mergeSortedArr,
     swap,
-    reverse
+    reverse,
+    reverseWords
 }
 
  
