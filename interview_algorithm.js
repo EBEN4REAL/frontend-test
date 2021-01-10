@@ -50,7 +50,8 @@ const swap = a => b => {
 const reverse = str =>  str.split('').reverse().join('')
 
 
-const funcObjs = {
+
+module.exports =  {
     verifyPrime,
     primefactors,
     fibonacciSequence,
@@ -61,6 +62,4 @@ const funcObjs = {
     reverse
 }
 
-
-module.exports =  funcObjs;
  
