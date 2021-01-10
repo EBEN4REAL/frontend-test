@@ -1,6 +1,6 @@
 const functions = require("./interview_algorithm.js");
 
-console.log(functions.reverseWords("I love Eben"))
+console.log(functions.palindrome("omb"))
 test("Return reversed string", () => {
     expect(functions.reverse('Eben')).toBe('nebE');
 });
@@ -17,4 +17,7 @@ test('verify Prime factors' , () => {
     expect(functions.primefactors(4)).toBe('1, 2, 4')
 })
 
-
+test("Reverse in place", () => {
+    let reverseInPlace = functions.reversInPlace("I Love Eben")
+    expect(reverseInPlace).toBe("I evoL nebE")
+})

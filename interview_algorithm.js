@@ -50,7 +50,43 @@ const reverse = str =>  str.split('').reverse().join('')
 
 const reverseWords = str =>  str.split('').reverse().join('')
 
+const reversInPlace = str => {
+    let strArr = str.split(' ')
+    for(let i=0; i<strArr.length; i++) {
+        strArr[i] =  strArr[i].split('').reverse().join('')
+    }
+    return strArr.join(' ')
+}
 
+const firstNonRepeatingChar = str => {
+    let obj = {}
+    for(let i=0; i<str.length; i++) {
+        if(str[i] !== ' ') {
+            obj[str[i]] =  obj[str[i]] + 1 || 0
+        }
+    }
+    for(let j in obj) {
+        if(obj[j] === 0)  return j
+    }
+}
+
+const removeStringDuplicateChars = str => {
+    let obj = {}
+    for(let i=0; i<str.length; i++) {
+        if(str[i] !== ' '){
+            obj[str[i]] = obj[str[i]] + 1 || 0
+        }
+    }
+    let pureString = ''
+    for(let j in obj) {
+        if(obj[j] === 0) {
+            pureString += j
+        }
+    }
+    return pureString
+}
+
+const palindrome = str => str === str.split('').reverse().join('')
 
 module.exports =  {
     verifyPrime,
@@ -61,7 +97,11 @@ module.exports =  {
     mergeSortedArr,
     swap,
     reverse,
-    reverseWords
+    reverseWords,
+    reversInPlace,
+    firstNonRepeatingChar,
+    removeStringDuplicateChars,
+    palindrome
 }
 
  
