@@ -1,6 +1,6 @@
 const functions = require("./interview_algorithm.js");
 
-console.log(functions.palindrome("omb"))
+console.log(functions.findMissingNumber([5, 2, 1, 3, 4, 6,8, 9, 10]))
 test("Return reversed string", () => {
     expect(functions.reverse('Eben')).toBe('nebE');
 });
@@ -19,5 +19,6 @@ test('verify Prime factors' , () => {
 
 test("Reverse in place", () => {
     let reverseInPlace = functions.reversInPlace("I Love Eben")
+  
     expect(reverseInPlace).toBe("I evoL nebE")
 })
