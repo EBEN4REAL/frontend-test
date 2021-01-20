@@ -96,7 +96,6 @@ const generateRandomNumbers = min => max => {
 
 const findMissingNumber = arr => {
     const sortedArray = Array.from(new Set([...arr].sort(function(a, b){return a-b})));
-    console.log(sortedArray)
     for(let i=0; i<sortedArray.length; i++){
         if(sortedArray[i] + 1 !== sortedArray[i + 1]) {
             return sortedArray[i] + 1
@@ -104,6 +103,20 @@ const findMissingNumber = arr => {
     }
 }
 
+const sumFinder = arr => sum => {
+    const sortedArray = Array.from(new Set(arr.sort(function(a, b){return a-b})));
+    console.log(sortedArray)
+    for(let i=0; i<sortedArray.length; i++) {
+        for(let j=1; j<sortedArray.length; j++) {
+            const foundSum  = sortedArray[i] + sortedArray[j]
+            console.log(foundSum)
+            if(foundSum === sum) {
+                return true
+            }
+        }
+    }
+    return false
+}
 module.exports =  {
     verifyPrime,
     primefactors,
@@ -119,7 +132,8 @@ module.exports =  {
     removeStringDuplicateChars,
     palindrome,
     generateRandomNumbers,
-    findMissingNumber
+    findMissingNumber,
+    sumFinder
 }
 
  

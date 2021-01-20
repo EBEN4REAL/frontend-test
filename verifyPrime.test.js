@@ -1,6 +1,6 @@
 const functions = require("./interview_algorithm.js");
 
-console.log(functions.findMissingNumber([5, 2, 1, 3, 4, 6,8, 9, 10]))
+console.log(functions.sumFinder([6,4,3,2,1,7])(100))
 test("Return reversed string", () => {
     expect(functions.reverse('Eben')).toBe('nebE');
 });
