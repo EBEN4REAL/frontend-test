@@ -118,6 +118,10 @@ const largestSumTwo = arr => {
     return sortedArr[sortedArr.length - 1]  + sortedArr[sortedArr.length - 2]
 }
 
+const numberOfZeros = num => {
+    return (num / 10) + 1
+}
+
 module.exports =  {
     verifyPrime,
     primefactors,
@@ -135,7 +139,8 @@ module.exports =  {
     generateRandomNumbers,
     findMissingNumber,
     sumFinder,
-    largestSumTwo
+    largestSumTwo,
+    numberOfZeros
 }
 
  
