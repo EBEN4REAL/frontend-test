@@ -89,8 +89,6 @@ const removeStringDuplicateChars = str => {
 const palindrome = str => str === str.split('').reverse().join('')
 
 const generateRandomNumbers = min => max => {
-    console.log(Math.random())
-    console.log((max - min + 1) + min)
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
@@ -105,11 +103,9 @@ const findMissingNumber = arr => {
 
 const sumFinder = arr => sum => {
     const sortedArray = Array.from(new Set(arr.sort(function(a, b){return a-b})));
-    console.log(sortedArray)
     for(let i=0; i<sortedArray.length; i++) {
         for(let j=1; j<sortedArray.length; j++) {
             const foundSum  = sortedArray[i] + sortedArray[j]
-            console.log(foundSum)
             if(foundSum === sum) {
                 return true
             }
@@ -117,6 +113,11 @@ const sumFinder = arr => sum => {
     }
     return false
 }
+const largestSumTwo = arr => {
+    const sortedArr = Array.from(new Set(arr.sort(function(a, b){return a-b})))
+    return sortedArr[sortedArr.length - 1]  + sortedArr[sortedArr.length - 2]
+}
+
 module.exports =  {
     verifyPrime,
     primefactors,
@@ -133,7 +134,8 @@ module.exports =  {
     palindrome,
     generateRandomNumbers,
     findMissingNumber,
-    sumFinder
+    sumFinder,
+    largestSumTwo
 }
 
  
