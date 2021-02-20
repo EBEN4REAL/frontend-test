@@ -121,7 +121,34 @@ const largestSumTwo = arr => {
 const numberOfZeros = num => {
     return (num / 10) + 1
 }
-
+function smallestIntergerNotInArray(A) {
+    var min = 1;
+    A.sort(function(a,b){
+        return a - b; 
+    });
+    for(let i=0; i<A.length; i++) {
+        if(A[i] > -1 && A[i] == min) {
+            min++
+        }else {
+            return min
+        }
+    }
+}
+const binaryGap = n => {
+    let base2Val = n.toString(2)
+    let countArr = []
+    let count = 0 
+    for(let i=0; i<base2Val.length; i++){
+        if(base2Val[i] == 0) {
+            count += 1
+        }
+        if(base2Val[i] == 1) {
+            countArr.push(count)
+            count = 0
+        }
+    }
+    return Math.max(...countArr)
+}
 module.exports =  {
     verifyPrime,
     primefactors,
@@ -140,7 +167,9 @@ module.exports =  {
     findMissingNumber,
     sumFinder,
     largestSumTwo,
-    numberOfZeros
+    numberOfZeros,
+    smallestIntergerNotInArray,
+    binaryGap
 }
 
  

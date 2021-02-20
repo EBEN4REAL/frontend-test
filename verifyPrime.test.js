@@ -1,6 +1,6 @@
 const functions = require("./interview_algorithm.js");
 
-console.log(functions.numberOfZeros(50))
+console.log(functions.binaryGap(1041))
 test("Return reversed string", () => {
     expect(functions.reverse('Eben')).toBe('nebE');
 });
