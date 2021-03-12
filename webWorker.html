@@ -1,0 +1,23 @@
+<html>
+    <title>Web workers</title>
+    <head></head>
+    <body>
+        
+        <button onclick="show()">Click</button>
+    
+    <script>
+        let x = 0
+        function show() {
+            alert('Button clicked!')
+        }
+        if(window.Worker) {
+            const myWorker= new Worker('worker.js')
+            const message = { input:x}
+            myWorker.postMessage(message)
+            myWorker.onmessage = (e) => {
+                console.dir(e.data)
+            }
+        }
+    </script>
+    </body>
+</html>

@@ -124,15 +124,17 @@ const numberOfZeros = num => {
 function smallestIntergerNotInArray(A) {
     var min = 1;
     A.sort(function(a,b){
-        return a - b; 
+       // Sort the array explicit way
+       return a - b; 
     });
-    for(let i=0; i<A.length; i++) {
-        if(A[i] > -1 && A[i] == min) {
-            min++
-        }else {
-            return min
+
+    for (var i in A) {
+        if (A[i] > -1 && A[i] == min) {
+               min++;
         }
     }
+
+    return min;
 }
 const binaryGap = n => {
     let base2Val = n.toString(2)
@@ -149,6 +151,139 @@ const binaryGap = n => {
     }
     return Math.max(...countArr)
 }
+
+function cyclicRotationArray(A, K) {
+    let count = 0
+    for(let i=0; i<A.length; i++) {
+        if(K >= A.length) {
+            K = K % A.length
+        }
+        if (K == 0) return A;
+        if(count < K) {
+            let lastItem = A[A.length - 1]
+            A.pop()
+            A.unshift(lastItem)
+            count++
+        }
+    }
+    return A
+}
+function unPairedValue(A) { // Inefficient solution
+    let obj = {}
+    for(i in A) {
+        obj[A[i]] = obj[A[i]] + 1 || 1
+    }
+    for(key of Object.keys(obj)) {
+        if(obj[key] == 1) {
+            return parseInt(key)
+        }
+    }
+}
+function unpairedValue(A) { // Efficient solution
+    stack = new Object();
+    for (let i = 0; i < A.length; i++){
+        if (stack.hasOwnProperty(A[i])) {
+            delete stack[A[i]]; 
+        } else {
+            stack[A[i]] = 1;
+        }
+    }
+    solution = Object.keys(stack);
+    return parseInt(solution[0]);
+}
+
+function frogJump(X, Y, D, jump=0) {  // Recursive solution
+    if(X < Y) {
+        let newPos = X + D
+        let newJump  = jump  + 1
+        return frogJump(newPos, Y, D, newJump)
+    }else {
+        return jump
+    }
+}
+function frogJmp(X, Y, D, jump=0) {  // Effiicient solution
+    return Math.ceil((Y-X)/D)
+}
+function missingElement (A) { // Inefficient solution
+    if(A.length < 1 || !A) return 1
+     A.sort((a,b) => a - b)
+    for(let i=0; i<=sortedArr.length; i++) {
+        if(A[i+1] !== A[i] + 1) {
+            return A[i] + 1
+        }else {
+            continue
+        }
+    }
+}
+function missingElemen (A) { // Efficient solution
+    if (A.length === 0 || !A) {
+        return 1;
+    }
+
+    A.sort((a, b) => a - b);
+    let count = A[0];
+    if (count !== 1) { return 1 }
+    for (let i = 0; i <= A.length; i++) {
+        if (A[i + 1] === count + 1) {
+            count ++;
+            continue
+        }
+        return count + 1;
+    }
+}
+function TapeEquilibrium(A) {   // Ineffificient solution
+    let secondIndex = 1
+    let sums = []
+    for(let i=0; i<A.length; i++) {
+        if(i == (A.length -2)) return Math.min(...sums) 
+        const firstArr = A.slice(0, secondIndex)
+        let firstSum = firstArr.reduce((acc,cur) => acc += cur, 0)
+        const secondSum = A.slice(secondIndex).reduce((acc,cur) => acc += cur, 0)
+        const abSum = Math.abs(firstSum - secondSum)
+        sums.push(abSum)
+        secondIndex++
+    }
+}
+function TapeEquilibriu(A){ // Efficient Solution
+    let left = A[0];
+    let right = 0;    
+    for (let i = 1; i < A.length; i++){
+        right += A[i]
+    }
+    let min = Math.abs(left - right);
+    for (let i = 1; i < A.length-1; i++){
+        left += A[i];
+        right -= A[i];
+        if (min > (Math.abs(left - right))) {
+            min = Math.abs(left - right);
+        }
+    }
+    return min;
+}
+function frogRiverOne(X, A) {
+    let holdValues = new Set();
+     for(i=0;i<A.length;i++) {
+         holdValues.add(A[i]);
+         if(holdValues.size == X)  return i;
+     }
+     return -1;
+ }
+
+//  Check if a string contains all the letters of the alphabets
+function isPangram(string){
+  let newObj = {}
+  for(let i=0; i<string.length; i++) {
+    if(string[i] !== ' ' &&  string[i] !== ".") {
+       newObj[string[i]] = newObj[string[i]] + 1 || 0
+    }
+  }
+  if(Object.keys(newObj).length < 26) {
+    return false
+  }else {
+    return true
+  }
+}
+ 
 module.exports =  {
     verifyPrime,
     primefactors,
@@ -169,7 +304,10 @@ module.exports =  {
     largestSumTwo,
     numberOfZeros,
     smallestIntergerNotInArray,
-    binaryGap
+    binaryGap,
+    cyclicRotationArray,
+    unpairedValue,
+    frogRiverOne
 }
 
  
