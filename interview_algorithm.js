@@ -283,6 +283,16 @@ function isPangram(string){
     return true
   }
 }
+function reverseLinkedList(head) {
+    let prev = null
+    while(head !== null) {
+        let next = head.next
+        head.next = prev
+        prev = head
+        head = next
+    }
+    return prev
+};
  
 module.exports =  {
     verifyPrime,

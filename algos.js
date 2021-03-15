@@ -490,7 +490,6 @@
 
             remove() {
                 while(this.stackA.peek()) {
-                    console.log(this.stackA.pop())
                     this.stackB.push(this.stackA.pop())
                 }
                 const  record = this.stackB.pop()
