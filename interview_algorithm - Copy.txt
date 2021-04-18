@@ -32,9 +32,6 @@ const greatestCommonDivisor = (num1, num2) => {
 } 
 
 const removeArrayDuplicates = arr => {
-    return Array.from(Array.prototype.sort.call(new Set([...arr])))
-
-    // OR THIS
     let newArr = []
     arr.forEach((el) => {
         const getIndex = newArr.indexOf(el)
@@ -127,12 +124,13 @@ const numberOfZeros = num => {
 function smallestIntergerNotInArray(A) {
     var min = 1;
     A.sort(function(a,b){
+       // Sort the array explicit way
        return a - b; 
     });
 
     for (var i in A) {
         if (A[i] > -1 && A[i] == min) {
-            min++;
+               min++;
         }
     }
 
@@ -509,8 +507,6 @@ var strStr = function(haystack, needle) {
         return  -1
     }
 }    
-
-
 
 module.exports =  {
     verifyPrime,

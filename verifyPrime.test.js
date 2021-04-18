@@ -1,6 +1,6 @@
 const functions = require("./interview_algorithm.js");
 
-console.log(functions.frogRiverOne(4, [1, 3, 1, 4, 2, 3, 5, 4]))
+console.log(functions.numberOfZeros(200))
 test("Return reversed string", () => {
     expect(functions.reverse('Eben')).toBe('nebE');
 });
