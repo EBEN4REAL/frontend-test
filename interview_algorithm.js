@@ -140,6 +140,7 @@ function smallestIntergerNotInArray(A) {
 }
 const binaryGap = n => {
     let base2Val = n.toString(2)
+    console.log(base2Val)
     let countArr = []
     let count = 0 
     for(let i=0; i<base2Val.length; i++){
@@ -151,13 +152,15 @@ const binaryGap = n => {
             count = 0
         }
     }
+    console.log(countArr)
     return Math.max(...countArr)
 }
 
 function cyclicRotationArray(A, K) {
     let count = 0
+    if(!A) return 0
     for(let i=0; i<A.length; i++) {
-        if(K >= A.length) {
+        if(K > A.length) {
             K = K % A.length
         }
         if (K == 0) return A;
@@ -414,6 +417,19 @@ var romanToInt = function(s) {
     return longCommonPrefix
 };
 
+function repeatedString(s, n) {
+    
+    const as = s.split("").filter(c => c === "a" ).length;
+    const times = parseInt(n / s.length);
+    const rest = n % s.length;
+    
+    const totalAs = times * as
+        + s.slice(0, rest).split("").filter(c => c === "a").length
+    
+    return totalAs;
+    
+ }
+
 
  const isValidParentheses = function isValid(s) {
     const bracketsObj = {
@@ -511,6 +527,115 @@ var strStr = function(haystack, needle) {
 }    
 
 
+// HACKERRANK SOLUTIONS
+function sockMerchant(n, ar) {
+    let sortedArr = ar.sort()
+    let pairs = 0
+    
+    for(let i=0; i<sortedArr.length; i++) {
+        if(sortedArr[i] === sortedArr[i+1]) {
+            pairs++
+            i++
+        }
+    }
+    return pairs
+}
+
+function countingValleys(steps, path) {
+    
+    let valleys = 0
+    let currentLevel = 0
+    
+    for(let i=0; i<path.length; i++) {
+        if(path[i] === 'U') {
+            currentLevel++
+        }else {
+            currentLevel--
+        }
+        if(currentLevel === 0 && path[i] === 'U') {
+            valleys++
+        }
+    }
+    return valleys
+}
+function jumpingOnClouds(c) {
+    let jumps = 0
+    for(let i=0; i<c.length-1;) {
+        if(c[i+2] !== 1) {
+            i += 2
+        }else {
+            i+=1
+        }
+        jumps++
+    }
+   
+    return jumps
+}
+
+const deepCopyFunction = (obj) => {
+    let clone, value, key
+  
+    if (typeof obj !== "object" || obj === null) {
+      return obj 
+    }
+  
+    clone = Array.isArray(obj) ? [] : {}
+  
+    for (key in obj) {
+      value = obj[key]
+      clone[key] = deepCopyFunction(value)
+    }
+
+    return clone
+  }
+ 
+  function countApplesAndOranges(s, t, a, b, apples, oranges) {
+
+    const appsArr = apples.map(apple => a + apple)
+    const orangesArr = oranges.map(orange => b + orange)
+    
+    let applesCount = 0
+    let orangesCount = 0
+    
+    appsArr.forEach(app => {
+        if(app >= s && app <= t) {
+            applesCount++
+        }
+    })
+    
+    orangesArr.forEach(or => {
+        if(or >= s && or <= t) {
+            orangesCount++
+        }
+    })
+    
+    console.log(applesCount)
+    console.log(orangesCount)
+}
+
+function birthdayCakeCandles(candles) {
+    const maxNum  = Math.max(...candles)
+    return candles.filter(num => num === maxNum).length
+}
+function timeConversion(s) {
+    const mode  = s.slice(s.length - 2)
+    const timeStr = s.slice(0, s.length - 2)
+    const timeStrArr = timeStr.split(":")
+    let hour = parseInt(timeStrArr[0])
+    
+    if(mode == 'PM') {
+        if(hour < 12) {
+            hour = 12 + hour
+            timeStrArr[0] = hour
+        }
+    }else {
+        timeStrArr[0] = hour === 12 ? '00' : null
+    }
+    
+    return timeStrArr.join(':')
+    
+}
+
 
 module.exports =  {
     verifyPrime,
@@ -535,5 +660,6 @@ module.exports =  {
     binaryGap,
     cyclicRotationArray,
     unpairedValue,
-    frogRiverOne
+    frogRiverOne,
+    deepCopyFunction
 }

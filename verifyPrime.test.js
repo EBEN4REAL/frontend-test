@@ -1,6 +1,6 @@
 const functions = require("./interview_algorithm.js");
 
-console.log(functions.numberOfZeros(200))
+console.log(functions.deepCopyFunction({name: "Paddy", address: {town: "Lerum", country: "Sweden"}}))
 test("Return reversed string", () => {
     expect(functions.reverse('Eben')).toBe('nebE');
 });
@@ -25,3 +25,9 @@ test("Reverse in place", () => {
 test("Largest Two sum", () => {
     expect(functions.largestSumTwo([1,3,1,3,4,5])).toEqual(9)
 })
+
+test("Deep cloned objectes", () => {
+    const sampleObj = {name: "Paddy", address: {town: "Lerum", country: "Sweden"}}
+    expect(functions.deepCopyFunction(sampleObj)).toBe(sampleObj)
+})
+ 

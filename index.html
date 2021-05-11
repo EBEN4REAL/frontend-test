@@ -17,5 +17,13 @@
     <!-- <script type="text/javascript" src="constructor.js"></script> -->
     <script type="text/javascript" src="interview_algorithm.js"></script>
 
+    <script>
+        fetch('https://success.spidergap.com/partners.json')
+            .then(res => res.json())
+            .then((json) => {
+                console.log(json)
+            });
+    </script>
+
 </html>
 
