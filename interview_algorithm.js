@@ -626,10 +626,11 @@ function timeConversion(s) {
     if(mode == 'PM') {
         if(hour < 12) {
             hour = 12 + hour
-            timeStrArr[0] = hour
+            timeStrArr[0] = hour.toString()
         }
     }else {
-        timeStrArr[0] = hour === 12 ? '00' : null
+        hour = hour < 10 ? "0" + hour.toString() : hour.toString()
+        timeStrArr[0] = hour == 12 ? '00' : hour
     }
     
     return timeStrArr.join(':')
