@@ -609,8 +609,6 @@ const deepCopyFunction = (obj) => {
         }
     })
     
-    console.log(applesCount)
-    console.log(orangesCount)
 }
 
 function birthdayCakeCandles(candles) {
@@ -635,6 +633,47 @@ function timeConversion(s) {
     
     return timeStrArr.join(':')
     
+}
+
+function intThousands(num) {
+    if (num < 1) return 0
+    
+    let start = new StringBuilder()
+    let end   = new StringBuilder()
+
+    for (let i = 1; i <= num; i++) {
+        if (i === 1) {
+            start.append('1')
+        } else {
+            start.append('0')
+        }
+        end = (parseInt(start) * 10) - 1
+    }
+
+    console.log(start.toString())
+    console.log(end)
+}
+
+function StringBuilder(value) {
+    this.strings = new Array("");
+    this.append(value);
+}
+
+// Appends the given value to the end of this instance.
+StringBuilder.prototype.append = function (value) {
+    if (value) {
+        this.strings.push(value);
+    }
+}
+
+// Clears the string buffer
+StringBuilder.prototype.clear = function () {
+    this.strings.length = 1;
+}
+
+// Converts this instance to a String.
+StringBuilder.prototype.toString = function () {
+    return this.strings.join("");
 }
 
 
@@ -662,5 +701,6 @@ module.exports =  {
     cyclicRotationArray,
     unpairedValue,
     frogRiverOne,
-    deepCopyFunction
+    deepCopyFunction,
+    intThousands
 }
